@@ -1,11 +1,6 @@
-import LoginPage from "./login/page";
+import { notFound } from "next/navigation";
 
 
 export default function Home() {
-
-  return (
-        <>
-        <LoginPage />
-        </>
-  );
+  notFound();
 }
