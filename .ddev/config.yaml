@@ -1,0 +1,32 @@
+name: booking-saas
+# Wyłączamy Nginx/Apache - używamy DDEV tylko do Node.js i bazy danych
+type: generic
+webserver_type: generic 
+
+# Wymuszamy najnowszą stabilną wersję Node.js
+nodejs_version: "20" 
+
+# Wybieramy bazę danych (zamiast MySQL dajemy PostgreSQL, która świetnie pasuje do nowoczesnych apek)
+database:
+  type: postgres
+  version: "16"
+
+# Wystawiamy porty dla frontendu (Next.js - 3000) i backendu (Express - 4000) na zewnątrz kontenera
+web_extra_exposed_ports:
+  - name: frontend
+    container_port: 3000
+    http_port: 3000
+    https_port: 3001
+  - name: backend
+    container_port: 4000
+    http_port: 4000
+    https_port: 4001
+
+# Opcjonalnie: DDEV może automatycznie uruchamiać oba serwery przy wpisaniu `ddev start`
+web_extra_daemons:
+  - name: frontend-dev
+    command: "npm run dev"
+    directory: /var/www/html/frontend
+  - name: backend-dev
+    command: "npm run dev"
+    directory: /var/www/html/backend
