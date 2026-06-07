@@ -67,7 +67,7 @@ export default function LoginForm(){
         <>
         <main style={{ backgroundImage: `url(${backgroundImg.src})` }} className="min-h-screen bg-cover bg-center flex items-center justify-center p-4">
             <div className="bg-cover bg-center mx-auto my-auto flex flex-col items-center gap-x-4 p-6 bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl outline outline-black/5">
-            <a href="/"><MainLogo className="mb-5"/></a>
+            <MainLogo className="mb-5" width={350} height={150}/>
             <h2 className="text-black">Zaloguj się do panelu systemu rezerwacji hoteli</h2>
             <form onSubmit={handleSubmit} className="flex flex-wrap mt-8 w-100 gap-y-2" method="post">
                 <input onChange={(e) => setEmail(e.target.value)} 
